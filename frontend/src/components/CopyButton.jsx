@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Copy, Check } from 'lucide-react'
 
 export default function CopyButton({ text, className = '' }) {
   const [copied, setCopied] = useState(false)
@@ -19,7 +20,10 @@ export default function CopyButton({ text, className = '' }) {
       onClick={handleCopy}
       title="Copy to clipboard"
     >
-      {copied ? '✓ Copied' : 'Copy'}
+      {copied
+        ? <><Check size={11} strokeWidth={2.5} /> Copied</>
+        : <><Copy size={11} strokeWidth={2} /> Copy</>
+      }
     </button>
   )
 }

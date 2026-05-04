@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { PenLine, ScanSearch, CheckCircle2, XCircle, Cpu } from 'lucide-react'
 import { signMessage, verifySignature } from '../api/crypto'
 import CopyButton from './CopyButton'
 
@@ -40,11 +41,11 @@ function SignPanel({ onAddToast }) {
 
   return (
     <div className="card">
-      <div className="card-title"><span className="icon">✍️</span> Ký Thông Điệp</div>
+      <div className="card-title"><PenLine size={18} strokeWidth={2} /> Ký Thông Điệp</div>
       <div className="card-sub">
         Dùng Ed25519 private key để tạo chữ ký số cho thông điệp bất kỳ.
       </div>
-      <div className={`algo-badge indigo`}>◆ Ed25519 · Chữ ký số (64 bytes)</div>
+      <div className="algo-badge indigo"><Cpu size={11} strokeWidth={2} /> Ed25519 · Chữ ký số (64 bytes)</div>
 
       <div className="field">
         <label>Private Key (Base64)</label>
@@ -67,7 +68,7 @@ function SignPanel({ onAddToast }) {
       </div>
 
       <button className="btn btn-primary btn-full" onClick={handleSign} disabled={loading}>
-        {loading ? <><span className="spinner" /> Đang ký...</> : '✍️ Ký Thông Điệp'}
+        {loading ? <><span className="spinner" /> Đang ký...</> : <><PenLine size={14} strokeWidth={2.5} /> Ký Thông Điệp</>}
       </button>
 
       {result && (
@@ -111,11 +112,11 @@ function VerifyPanel({ onAddToast }) {
 
   return (
     <div className="card">
-      <div className="card-title"><span className="icon">🔎</span> Xác Thực Chữ Ký</div>
+      <div className="card-title"><ScanSearch size={18} strokeWidth={2} /> Xác Thực Chữ Ký</div>
       <div className="card-sub">
         Kiểm tra xem chữ ký có được tạo bởi private key tương ứng với public key đã cho hay không.
       </div>
-      <div className={`algo-badge indigo`}>◆ Ed25519 · Xác thực chữ ký</div>
+      <div className="algo-badge indigo"><Cpu size={11} strokeWidth={2} /> Ed25519 · Xác thực chữ ký</div>
 
       <div className="field">
         <label>Public Key (Base64)</label>
@@ -148,12 +149,17 @@ function VerifyPanel({ onAddToast }) {
       </div>
 
       <button className="btn btn-primary btn-full" onClick={handleVerify} disabled={loading}>
-        {loading ? <><span className="spinner" /> Đang xác thực...</> : '🔎 Xác Thực Chữ Ký'}
+        {loading ? <><span className="spinner" /> Đang xác thực...</> : <><ScanSearch size={14} strokeWidth={2.5} /> Xác Thực Chữ Ký</>}
       </button>
 
       {result && (
         <div className={`verify-result ${result.valid ? 'valid' : 'invalid'}`}>
-          <div className="verify-icon">{result.valid ? '✅' : '❌'}</div>
+          <div className="verify-icon">
+            {result.valid
+              ? <CheckCircle2 size={28} strokeWidth={2} />
+              : <XCircle size={28} strokeWidth={2} />
+            }
+          </div>
           <div>
             <div className="verify-title">
               {result.valid ? 'Chữ ký HỢP LỆ' : 'Chữ ký KHÔNG HỢP LỆ'}

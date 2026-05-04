@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { KeyRound, Lock, Zap, Cpu } from 'lucide-react'
 import { generateEd25519Keys, generateX25519Keys } from '../api/crypto'
 import CopyButton from './CopyButton'
 
@@ -19,19 +20,19 @@ function KeyPairSection({ title, badge, badgeClass, description, onGenerate, key
   return (
     <div className="card">
       <div className="card-title">
-        <span className="icon">{badgeClass === 'indigo' ? '🔏' : '🔒'}</span>
+        {badgeClass === 'indigo' ? <KeyRound size={18} strokeWidth={2} /> : <Lock size={18} strokeWidth={2} />}
         {title}
       </div>
       <div className="card-sub">{description}</div>
 
-      <div className={`algo-badge ${badgeClass}`}>◆ {badge}</div>
+      <div className={`algo-badge ${badgeClass}`}><Cpu size={11} strokeWidth={2} /> {badge}</div>
 
       <button
         className="btn btn-primary btn-full"
         onClick={onGenerate}
         disabled={loading}
       >
-        {loading ? <><span className="spinner" /> Đang tạo...</> : '⚡ Tạo Cặp Khóa Mới'}
+        {loading ? <><span className="spinner" /> Đang tạo...</> : <><Zap size={14} strokeWidth={2.5} /> Tạo Cặp Khóa Mới</>}
       </button>
 
       {keys && (

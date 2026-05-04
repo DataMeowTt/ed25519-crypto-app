@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Lock, LockOpen, Cpu } from 'lucide-react'
 import { encryptMessage, decryptMessage } from '../api/crypto'
 import CopyButton from './CopyButton'
 
@@ -41,12 +42,12 @@ function EncryptPanel({ onAddToast }) {
 
   return (
     <div className="card">
-      <div className="card-title"><span className="icon">🔐</span> Mã Hóa Thông Điệp</div>
+      <div className="card-title"><Lock size={18} strokeWidth={2} /> Mã Hóa Thông Điệp</div>
       <div className="card-sub">
         Người gửi dùng X25519 private key của mình cùng X25519 public key của người nhận để
         mã hóa bảo mật thông điệp. Chỉ người nhận mới có thể giải mã.
       </div>
-      <div className="algo-badge teal">◆ X25519-ECDH + HKDF-SHA256 + AES-256-GCM</div>
+      <div className="algo-badge teal"><Cpu size={11} strokeWidth={2} /> X25519-ECDH + HKDF-SHA256 + AES-256-GCM</div>
 
       <div className="field">
         <label>Private Key của Người Gửi (X25519, Base64)</label>
@@ -79,7 +80,7 @@ function EncryptPanel({ onAddToast }) {
       </div>
 
       <button className="btn btn-primary btn-full" onClick={handleEncrypt} disabled={loading}>
-        {loading ? <><span className="spinner" /> Đang mã hóa...</> : '🔐 Mã Hóa'}
+        {loading ? <><span className="spinner" /> Đang mã hóa...</> : <><Lock size={14} strokeWidth={2.5} /> Mã Hóa</>}
       </button>
 
       {result && (
@@ -129,12 +130,12 @@ function DecryptPanel({ onAddToast }) {
 
   return (
     <div className="card">
-      <div className="card-title"><span className="icon">🔓</span> Giải Mã Thông Điệp</div>
+      <div className="card-title"><LockOpen size={18} strokeWidth={2} /> Giải Mã Thông Điệp</div>
       <div className="card-sub">
         Người nhận dùng X25519 private key của mình cùng X25519 public key của người gửi
         để giải mã. AES-256-GCM xác thực tính toàn vẹn trước khi giải mã.
       </div>
-      <div className="algo-badge teal">◆ X25519-ECDH + HKDF-SHA256 + AES-256-GCM</div>
+      <div className="algo-badge teal"><Cpu size={11} strokeWidth={2} /> X25519-ECDH + HKDF-SHA256 + AES-256-GCM</div>
 
       <div className="field">
         <label>Private Key của Người Nhận (X25519, Base64)</label>
@@ -178,7 +179,7 @@ function DecryptPanel({ onAddToast }) {
       </div>
 
       <button className="btn btn-primary btn-full" onClick={handleDecrypt} disabled={loading}>
-        {loading ? <><span className="spinner" /> Đang giải mã...</> : '🔓 Giải Mã'}
+        {loading ? <><span className="spinner" /> Đang giải mã...</> : <><LockOpen size={14} strokeWidth={2.5} /> Giải Mã</>}
       </button>
 
       {result && (

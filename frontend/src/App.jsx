@@ -1,13 +1,14 @@
 import { useState } from 'react'
+import { KeyRound, PenLine, ShieldCheck } from 'lucide-react'
 import KeyGenerator from './components/KeyGenerator'
 import SignVerify from './components/SignVerify'
 import EncryptDecrypt from './components/EncryptDecrypt'
 import { useToast, ToastContainer } from './components/Toast'
 
 const TABS = [
-  { id: 'keys',    label: 'Tạo Khóa',        icon: '🗝️' },
-  { id: 'sign',    label: 'Ký & Xác Thực',   icon: '✍️' },
-  { id: 'encrypt', label: 'Mã Hóa & Giải Mã', icon: '🔐' },
+  { id: 'keys',    label: 'Tạo Khóa',         Icon: KeyRound },
+  { id: 'sign',    label: 'Ký & Xác Thực',    Icon: PenLine },
+  { id: 'encrypt', label: 'Mã Hóa & Giải Mã', Icon: ShieldCheck },
 ]
 
 export default function App() {
@@ -28,14 +29,14 @@ export default function App() {
 
       {/* ── Tab Navigation ── */}
       <nav className="tab-nav">
-        {TABS.map(tab => (
+        {TABS.map(({ id, label, Icon }) => (
           <button
-            key={tab.id}
-            className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
-            onClick={() => setActiveTab(tab.id)}
+            key={id}
+            className={`tab-btn ${activeTab === id ? 'active' : ''}`}
+            onClick={() => setActiveTab(id)}
           >
-            <span className="tab-icon">{tab.icon}</span>
-            {tab.label}
+            <Icon size={15} strokeWidth={2} />
+            {label}
           </button>
         ))}
       </nav>

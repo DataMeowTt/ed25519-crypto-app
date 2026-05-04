@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { CheckCheck, X } from 'lucide-react'
 
 export function useToast() {
   const [toasts, setToasts] = useState([])
@@ -17,7 +18,10 @@ export function ToastContainer({ toasts }) {
     <div className="toast-container">
       {toasts.map(t => (
         <div key={t.id} className={`toast ${t.type}`}>
-          <span>{t.type === 'success' ? '✓' : '✕'}</span>
+          {t.type === 'success'
+            ? <CheckCheck size={14} strokeWidth={2.5} />
+            : <X size={14} strokeWidth={2.5} />
+          }
           <span>{t.message}</span>
         </div>
       ))}

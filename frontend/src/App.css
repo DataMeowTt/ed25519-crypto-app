@@ -125,7 +125,7 @@ body {
   color: var(--accent);
   box-shadow: 0 0 16px rgba(99,102,241,.2);
 }
-.tab-icon { font-size: 16px; }
+.tab-icon { display: flex; align-items: center; }
 
 /* ── Content Container ─────────────────────────────────────────────────────── */
 .content {
@@ -154,7 +154,7 @@ body {
   gap: 10px;
   margin-bottom: 6px;
 }
-.card-title .icon { font-size: 18px; }
+.card-title { display: flex; align-items: center; gap: 10px; }
 .card-sub {
   font-size: 13px;
   color: var(--text-2);
@@ -340,7 +340,7 @@ body {
 .algo-badge {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   padding: 5px 12px;
   border-radius: 999px;
   font-size: 11px;
@@ -382,7 +382,7 @@ body {
   border-color: rgba(248,113,113,.4);
   color: var(--red);
 }
-.verify-icon { font-size: 28px; }
+.verify-icon { display: flex; align-items: center; flex-shrink: 0; }
 .verify-title { font-weight: 700; font-size: 15px; margin-bottom: 2px; }
 .verify-detail { font-size: 13px; opacity: .8; }
 
