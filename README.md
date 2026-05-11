@@ -79,8 +79,13 @@ Because ECDH is commutative, the recipient derives the same shared secret using 
 ### Prerequisites
 
 - **Python** ≥ 3.11
-- **Node.js** ≥ 18
-- **npm** ≥ 9
+- **Node.js** ≥ 18 with **npm** ≥ 9
+
+> **Note (macOS + Anaconda):** If `npm` is installed via Anaconda and not on your PATH, run this once before starting:
+> ```bash
+> export PATH="/opt/anaconda3/bin:$PATH"
+> ```
+> To make it permanent, add that line to `~/.zshrc` and run `source ~/.zshrc`.
 
 ### Option 1 — One-command start (recommended)
 
